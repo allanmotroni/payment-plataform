@@ -12,7 +12,7 @@ namespace PaymentPlataform.Infra.Repositories.Transfers
             _context = context;
         }
 
-        public async Task AddTransaction(Transfer transfer)
+        public async Task AddTransactionAsync(Transfer transfer)
         {
             await _context.Transfers.AddAsync(transfer);
         }

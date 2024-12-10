@@ -5,7 +5,7 @@ namespace PaymentPlataform.Infra.Repositories.Transfers
 {
     public interface ITransferRepository
     {
-        Task AddTransaction(Transfer transfer);
+        Task AddTransactionAsync(Transfer transfer);
         Task CommitAsync();
         Task<IDbContextTransaction> BeginTransactionAsync();
     }
