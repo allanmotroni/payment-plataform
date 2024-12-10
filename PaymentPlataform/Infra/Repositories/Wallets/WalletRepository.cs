@@ -21,13 +21,18 @@ namespace PaymentPlataform.Infra.Repositories.Wallets
             _context.Update(wallet);
         }
 
-        public async ValueTask<Wallet?> GetById(int id)
+        public async ValueTask<Wallet?> GetByIdAsync(int id)
         {
             return await _context.Wallets
                 .FindAsync(id);
         }
 
-        public async Task<Wallet?> GetByDocumentOrEmail(string document, string email)
+        public async Task<IEnumerable<Wallet>> GetAsync()
+        {
+            return await _context.Wallets.ToListAsync();
+        }
+
+        public async Task<Wallet?> GetByDocumentOrEmailAsync(string document, string email)
         {
             return await _context.Wallets
                 .FirstOrDefaultAsync(wallet => 
@@ -35,10 +40,8 @@ namespace PaymentPlataform.Infra.Repositories.Wallets
                 wallet.Email.Equals(email));
         }
 
-        public async Task CommitAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
+        public async Task CommitAsync() => 
+            await _context.SaveChangesAsync();        
 
     }
 }

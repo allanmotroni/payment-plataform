@@ -6,8 +6,9 @@ namespace PaymentPlataform.Infra.Repositories.Wallets
     {
         Task AddAsync(Wallet wallet);
         void Update(Wallet wallet);
-        Task<Wallet?> GetByDocumentOrEmail(string document, string email);
-        ValueTask<Wallet?> GetById(int id);
+        Task<IEnumerable<Wallet>> GetAsync();
+        Task<Wallet?> GetByDocumentOrEmailAsync(string document, string email);
+        ValueTask<Wallet?> GetByIdAsync(int id);
         Task CommitAsync();
     }
 }

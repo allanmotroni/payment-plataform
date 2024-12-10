@@ -1,0 +1,19 @@
+﻿services:
+  payment-db:
+    container_name: payment-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "YourStrong!Passw0rd"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - payment-volume:/var/opt/mssql
+    networks:
+      - payment-network
+
+volumes:
+  payment-volume:
+
+networks:
+  payment-network:
