@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PaymentPlataform.Extensions;
 using PaymentPlataform.Infra;
+using PaymentPlataform.Infra.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,5 +39,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MigrateDb();
 
 app.Run();
